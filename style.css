@@ -1,69 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    background: #f4f6f8;
-    font-family: Arial, sans-serif;
-    margin: 0;
+  background: #f4f6f8;
+  color: #333;
 }
 
-.container {
-    max-width: 1000px;   /* ← INDEX ENI KENGAYDI */
-    margin: 40px auto;
-    background: white;
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+header {
+  background: #1e88e5;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 10px;
+nav {
+  background: #1565c0;
+  padding: 10px;
+  text-align: center;
 }
 
-p {
-    text-align: center;
-    color: #555;
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 ustun */
-    gap: 15px;
+nav a:hover {
+  text-decoration: underline;
 }
 
-input {
-    padding: 12px;
-    font-size: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+.content {
+  padding: 20px;
 }
 
-input:focus {
-    border-color: #4a00e0;
-    outline: none;
+.card {
+  background: white;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.checkbox {
-    grid-column: span 2;
-    font-size: 14px;
-}
-
-button {
-    grid-column: span 2;
-    padding: 14px;
-    font-size: 18px;
-    background: #4a00e0;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #3a00b0;
-}
-
-#confirmation {
-    margin-top: 20px;
-    text-align: center;
-    color: green;
-    font-size: 16px;
+footer {
+  margin-top: 30px;
+  background: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }
