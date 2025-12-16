@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="admin.css">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-container">
+    <h1>Administrator paneli</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ism</th>
+                <th>Familiya</th>
+                <th>Telefon</th>
+                <th>Email</th>
+                <th>Shahar</th>
+                <th>Institut</th>
+                <th>Diplom</th>
+                <th>Amal</th>
+            </tr>
+        </thead>
+        <tbody id="clientTable"></tbody>
+    </table>
+</div>
+
+<script>
+/* MAʼLUMOTNI O‘QISH */
+let clients = JSON.parse(localStorage.getItem("clients"));
+if (!clients) {
+    clients = [];
+}
+
+const table = document.getElementById("clientTable");
+
+/* JADVALNI CHIZISH */
+function renderTable() {
+    table.innerHTML = "";
+
+    clients.forEach((client, index) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${client.name || ""}</td>
+            <td>${client.surname || ""}</td>
+            <td>${client.phone || ""}</td>
+            <td>${client.email || ""}</td>
+            <td>${client.city || ""}</td>
+            <td>${client.institute || ""}</td>
+            <td>${client.diploma || ""}</td>
+            <td>
+                <button type="button" class="delete-btn" style="display:none">
+                    O‘chirish
+                </button>
+            </td>
+        `;
+
+        /* QATOR BOSILSA DELETE CHIQADI */
+        row.addEventListener("click", () => {
+            const btn = row.querySelector(".delete-btn");
+            btn.style.display = "inline-block";
+        });
+
+        /* DELETE BOSILSA */
+        row.querySelector(".delete-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (confirm("Rostdan ham o‘chirmoqchimisiz?")) {
+                clients.splice(index, 1);
+                localStorage.setItem("clients", JSON.stringify(clients));
+                renderTable();
+            }
+        });
+
+        table.appendChild(row);
+    });
+}
+
+renderTable();
+</script>
+
+</body>
+</html>
