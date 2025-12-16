@@ -1,86 +1,43 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="admin.css">
-    <title>Admin panel</title>
-    <link rel="stylesheet" href="css/admin.css">
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="admin-container">
-    <h1>Administrator paneli</h1>
+<header>
+  <h1>🔒 Admin Panel</h1>
+  <p>Faqat ruxsat bilan kiriladi</p>
+</header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Ism</th>
-                <th>Familiya</th>
-                <th>Telefon</th>
-                <th>Email</th>
-                <th>Shahar</th>
-                <th>Institut</th>
-                <th>Diplom</th>
-                <th>Amal</th>
-            </tr>
-        </thead>
-        <tbody id="clientTable"></tbody>
-    </table>
-</div>
+<section class="content">
 
-<script>
-/* MAʼLUMOTNI O‘QISH */
-let clients = JSON.parse(localStorage.getItem("clients"));
-if (!clients) {
-    clients = [];
-}
+  <!-- LOGIN -->
+  <div id="login" class="card">
+    <h2>Admin kirish</h2>
+    <input type="password" id="password" placeholder="Parolni kiriting">
+    <button onclick="checkPassword()">Kirish</button>
+    <p id="error" style="color:red; display:none;">❌ Noto‘g‘ri parol</p>
+  </div>
 
-const table = document.getElementById("clientTable");
+  <!-- ADMIN CONTENT -->
+  <div id="admin" class="card" style="display:none;">
+    <h2>✅ Xush kelibsiz, Admin!</h2>
+    <p>Bu admin boshqaruv sahifasi.</p>
 
-/* JADVALNI CHIZISH */
-function renderTable() {
-    table.innerHTML = "";
+    <ul>
+      <li>📊 Statistika (keyin qo‘shiladi)</li>
+      <li>✏️ Kontent o‘zgartirish</li>
+      <li>⚙️ Sozlamalar</li>
+    </ul>
 
-    clients.forEach((client, index) => {
-        const row = document.createElement("tr");
+    <button onclick="logout()">Chiqish</button>
+  </div>
 
-        row.innerHTML = `
-            <td>${client.name || ""}</td>
-            <td>${client.surname || ""}</td>
-            <td>${client.phone || ""}</td>
-            <td>${client.email || ""}</td>
-            <td>${client.city || ""}</td>
-            <td>${client.institute || ""}</td>
-            <td>${client.diploma || ""}</td>
-            <td>
-                <button type="button" class="delete-btn" style="display:none">
-                    O‘chirish
-                </button>
-            </td>
-        `;
+</section>
 
-        /* QATOR BOSILSA DELETE CHIQADI */
-        row.addEventListener("click", () => {
-            const btn = row.querySelector(".delete-btn");
-            btn.style.display = "inline-block";
-        });
-
-        /* DELETE BOSILSA */
-        row.querySelector(".delete-btn").addEventListener("click", (e) => {
-            e.stopPropagation();
-            if (confirm("Rostdan ham o‘chirmoqchimisiz?")) {
-                clients.splice(index, 1);
-                localStorage.setItem("clients", JSON.stringify(clients));
-                renderTable();
-            }
-        });
-
-        table.appendChild(row);
-    });
-}
-
-renderTable();
-</script>
-
+<script src="js/admin.js"></script>
 </body>
 </html>
