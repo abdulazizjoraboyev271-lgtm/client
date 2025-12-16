@@ -1,69 +1,50 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Murojaat formasi</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Mijoz Sahifasi</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Murojaat uchun forma</h1>
-    <p>Iltimos, ma’lumotlarni to‘liq kiriting</p>
+<header>
+  <h1>🌐 Bizning Web Sayt</h1>
+  <p>Mijozlar uchun rasmiy sahifa</p>
+</header>
 
-    <form id="clientForm">
-        <input type="text" id="name" placeholder="Ism" required>
-        <input type="text" id="surname" placeholder="Familiya" required>
-        <input type="tel" id="phone" placeholder="Telefon raqam" required>
-        <input type="email" id="email" placeholder="Elektron pochta" required>
+<nav>
+  <a href="#">Bosh sahifa</a>
+  <a href="#">Xizmatlar</a>
+  <a href="#">Aloqa</a>
+  <a href="admin.html">Admin</a>
+</nav>
 
-        <input type="text" id="city" placeholder="Shahar" required>
-        <input type="text" id="address" placeholder="Manzil" required>
+<section class="content">
+  <h2>Xush kelibsiz</h2>
+  <p>
+    Bu sayt GitHub Pages orqali joylashtirilgan.
+    Mijozlar bu yerdan ma’lumot olishi mumkin.
+  </p>
 
-        <input type="text" id="institute" placeholder="Qaysi institutni bitirgansiz?" required>
-        <input type="text" id="diploma" placeholder="Qanday diplomingiz bor?" required>
+  <div class="card">
+    <h3>💼 Xizmatlarimiz</h3>
+    <ul>
+      <li>Web sayt yaratish</li>
+      <li>Dizayn</li>
+      <li>Frontend dasturlash</li>
+    </ul>
+  </div>
 
-        <label class="checkbox">
-            <input type="checkbox" required>
-            Qo‘shimcha shartnoma shartlariga roziman
-        </label>
+  <div class="card">
+    <h3>📞 Aloqa</h3>
+    <p>Email: example@gmail.com</p>
+    <p>Telegram: @username</p>
+  </div>
+</section>
 
-        <button type="submit">Yuborish</button>
-    </form>
-
-    <p id="confirmation"></p>
-</div>
-
-<script>
-const form = document.getElementById("clientForm");
-const confirm = document.getElementById("confirmation");
-
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const clientData = {
-        name: name.value,
-        surname: surname.value,
-        phone: phone.value,
-        email: email.value,
-        city: city.value,
-        address: address.value,
-        institute: institute.value,
-        diploma: diploma.value,
-        time: new Date().toLocaleString()
-    };
-
-    let clients = JSON.parse(localStorage.getItem("clients")) || [];
-    clients.push(clientData);
-    localStorage.setItem("clients", JSON.stringify(clients));
-
-    confirm.textContent =
-        "✅ Murojaatingiz qabul qilindi. Administrator siz bilan aloqaga chiqadi.";
-
-    form.reset();
-});
-</script>
+<footer>
+  <p>© 2025 | Barcha huquqlar himoyalangan</p>
+</footer>
 
 </body>
 </html>
