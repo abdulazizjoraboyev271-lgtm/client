@@ -3,41 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-  <!-- LOGIN QISMI -->
-  <div id="login">
-    <h2>🔐 Admin Login</h2>
-    <input type="password" id="password" placeholder="parolni kiriting!">
-    <br><br>
+  <!-- LOGIN -->
+  <div class="login-box" id="login">
+    <h2>🔐 Admin Kirish</h2>
+    <input type="password" id="password" placeholder="Parolni kiriting">
     <button onclick="checkPassword()">Kirish</button>
   </div>
 
-  <!-- ADMIN PANEL (YASHIRIN) -->
-  <div id="admin" style="display:none;">
+  <!-- ADMIN PANEL -->
+  <div class="admin-panel" id="admin">
     <h1>👑 Admin Panel</h1>
-    <p>Xush kelibsiz, admin!</p>
 
-    <ul>
-      <li>Mijozlar ro‘yxati</li>
-      <li>Buyurtmalar</li>
-      <li>Sozlamalar</li>
-    </ul>
+    <div class="cards">
+      <div class="card">👥 Mijozlar<br><span>12 ta</span></div>
+      <div class="card">📦 Buyurtmalar<br><span>5 ta</span></div>
+      <div class="card">⚙️ Sozlamalar</div>
+    </div>
 
-    <button onclick="logout()">Chiqish</button>
+    <button class="logout" onclick="logout()">Chiqish</button>
   </div>
 
-  <!-- SCRIPT HAR DOIM BODY OXIRIDA -->
   <script>
-    const ADMIN_PASSWORD = "oken1110"; // ← SHU YERDA PAROL
+    const ADMIN_PASSWORD = "oken1110";
 
     function checkPassword() {
       const input = document.getElementById("password").value;
-
       if (input === ADMIN_PASSWORD) {
         document.getElementById("login").style.display = "none";
         document.getElementById("admin").style.display = "block";
@@ -48,12 +42,10 @@
 
     function logout() {
       document.getElementById("admin").style.display = "none";
-      document.getElementById("login").style.display = "block";
+      document.getElementById("login").style.display = "flex";
       document.getElementById("password").value = "";
     }
   </script>
 
 </body>
 </html>
-
-
