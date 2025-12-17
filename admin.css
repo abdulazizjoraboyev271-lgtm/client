@@ -1,19 +1,87 @@
-const ADMIN_PASSWORD = "oken1110"; // 👈 SHU YERDA PAROLNI O‘ZGARTIR
-
-function checkPassword() {
-  const input = document.getElementById("password").value;
-
-  if (input === ADMIN_PASSWORD) {
-    document.getElementById("login").style.display = "none";
-    document.getElementById("admin").style.display = "block";
-    document.getElementById("error").style.display = "none";
-  } else {
-    document.getElementById("error").style.display = "block";
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
 }
 
-function logout() {
-  document.getElementById("admin").style.display = "none";
-  document.getElementById("login").style.display = "block";
-  document.getElementById("password").value = "";
+/* LOGIN */
+.login-box {
+  width: 350px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ADMIN PANEL */
+.admin-panel {
+  display: none;
+  padding: 30px;
+  color: white;
+}
+
+.admin-panel h1 {
+  font-size: 36px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  font-size: 22px;
+  width: 220px;
+  text-align: center;
+}
+
+.card span {
+  font-size: 28px;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.logout {
+  margin-top: 40px;
+  padding: 12px 30px;
+  font-size: 18px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
