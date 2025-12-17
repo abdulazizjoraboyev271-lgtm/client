@@ -4,42 +4,55 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="admin.css">
   <title>Admin Panel</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-<header>
-  <h1>🔒 Admin Panel</h1>
-  <p>Faqat ruxsat bilan kiriladi</p>
-</header>
-
-<section class="content">
-
-  <!-- LOGIN -->
-  <div id="login" class="card">
-    <h2>Admin kirish</h2>
+  <!-- LOGIN QISMI -->
+  <div id="login">
+    <h2>🔐 Admin Login</h2>
     <input type="password" id="password" placeholder="Parolni kiriting">
+    <br><br>
     <button onclick="checkPassword()">Kirish</button>
-    <p id="error" style="color:red; display:none;">❌ Noto‘g‘ri parol</p>
   </div>
 
-  <!-- ADMIN CONTENT -->
-  <div id="admin" class="card" style="display:none;">
-    <h2>✅ Xush kelibsiz, Admin!</h2>
-    <p>Bu admin boshqaruv sahifasi.</p>
+  <!-- ADMIN PANEL (YASHIRIN) -->
+  <div id="admin" style="display:none;">
+    <h1>👑 Admin Panel</h1>
+    <p>Xush kelibsiz, admin!</p>
 
     <ul>
-      <li>📊 Statistika (keyin qo‘shiladi)</li>
-      <li>✏️ Kontent o‘zgartirish</li>
-      <li>⚙️ Sozlamalar</li>
+      <li>Mijozlar ro‘yxati</li>
+      <li>Buyurtmalar</li>
+      <li>Sozlamalar</li>
     </ul>
 
     <button onclick="logout()">Chiqish</button>
   </div>
 
-</section>
+  <!-- SCRIPT HAR DOIM BODY OXIRIDA -->
+  <script>
+    const ADMIN_PASSWORD = "1234"; // ← SHU YERDA PAROL
 
-<script src="js/admin.js"></script>
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+
+      if (input === ADMIN_PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("admin").style.display = "block";
+      } else {
+        alert("❌ Noto‘g‘ri parol");
+      }
+    }
+
+    function logout() {
+      document.getElementById("admin").style.display = "none";
+      document.getElementById("login").style.display = "block";
+      document.getElementById("password").value = "";
+    }
+  </script>
+
 </body>
 </html>
-
